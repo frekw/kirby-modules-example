@@ -2,7 +2,9 @@ Title: Home
 
 ----
 
-Text: Yay! If you are seeing this, the installation of Kirby worked. :)
+Text: 
+
+Yay! If you are seeing this, the installation of Kirby worked. :)
 
 ## Get started
 
@@ -13,3 +15,35 @@ Text: Yay! If you are seeing this, the installation of Kirby worked. :)
 - (link: http://getkirby.com/support text: Get in contact) if you need support.
 
 **Have fun with Kirby!**
+
+----
+
+Body: Some body content.
+
+----
+
+Modules: 
+
+- 
+  title: My Awesome Site
+  subtitle: Some more content
+  image: '1 - Chroma.png'
+  content:
+    - 
+      label: A Button
+      type: button
+      options:
+        style: primary
+        size: big
+    - 
+      content: Some text goes here.
+      type: text
+    - 
+      label: Another button
+      type: button
+      options:
+        style: primary
+        size: big
+  type: hero
+  options:
+    position: left

@@ -3,10 +3,19 @@
 title: Page
 pages: true
 files: true
+
 fields:
   title:
     label: Title
-    type:  text
-  text:
-    label: Text
-    type:  textarea
+    type: text
+  body:
+    label: Body
+    type: textarea
+
+  modules:
+    label: Modules
+    type: modules
+
+    modules:
+      types:
+        - Hero

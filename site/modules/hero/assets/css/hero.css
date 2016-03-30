@@ -1,0 +1,22 @@
+.hero {
+  padding:4em;
+  color:#fff;
+  margin:0 -15em;
+  background-size:cover;
+  height:55em;
+}
+
+.hero a {
+  color:#fff;
+}
+
+.hero h1,
+.hero p {
+  width:66%;
+}
+
+.hero--align-right h1,
+.hero--align-right p {
+  text-align:right;
+  margin-left:33%;
+}

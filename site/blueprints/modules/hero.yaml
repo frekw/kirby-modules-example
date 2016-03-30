@@ -1,0 +1,31 @@
+type: Hero
+fields:
+  title:
+    label: Title
+    type: text
+
+  subtitle:
+    label: Subtitle
+    type: textarea
+
+  image:
+    label: Image
+    type: selector
+
+  content:
+    label: Content
+    type: modules
+    modules:
+      types:
+        - Button
+        - Text
+
+
+options:
+  position:
+    type: select
+    required: true
+    label: Text Position
+    options:
+      left: Left
+      right: Right

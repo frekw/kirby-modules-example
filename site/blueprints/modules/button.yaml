@@ -1,0 +1,22 @@
+type: CTA
+fields:
+  label:
+    label: Label
+    type: text
+
+options:
+  style:
+    label: Style
+    required: true
+    type: select
+    options:
+      primary: Primary
+      secondary: Secondary
+
+  size:
+    label: Size
+    required: true
+    type: select
+    options:
+      big: Big
+      default: Default

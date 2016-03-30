@@ -1,0 +1,5 @@
+type: Text
+fields:
+  content:
+    label: Text
+    type: textarea
