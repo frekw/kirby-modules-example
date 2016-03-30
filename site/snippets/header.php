@@ -10,6 +10,8 @@
   <meta name="keywords" content="<?php echo $site->keywords()->html() ?>">
 
   <?php echo css('assets/css/main.css') ?>
+  <?php echo css('modules.css') ?>
+  <?php echo js('modules.js') ?>
 
 </head>
 <body>
