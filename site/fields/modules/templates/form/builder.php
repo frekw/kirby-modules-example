@@ -2,9 +2,10 @@
 require_once implode(DS, array(__DIR__, 'fields.php'));
 
 class FormBuilder {
+    public static $cache = array();
+
     public $entry = null;
     public $type = null;
-    public $cache = array();
     public $parent = null;
     public $path = null;
 
@@ -16,14 +17,18 @@ class FormBuilder {
     }
 
     public function blueprint() {
-        if(isset($this->cache['blueprint'])) {
-            return $this->cache['blueprint'];
+        if(isset(self::$cache[$this->type])) {
+            return self::$cache[$this->type];
         }
 
         $path = f::resolve(implode(DS, array(kirby()->roots()->blueprints(), 'modules', $this->type)),
                            array('yml', 'php', 'yaml'));
 
-        return $this->cache['blueprint'] = data::read($path, 'yaml');
+        return self::$cache[$this->type] = data::read($path, 'yaml');
+    }
+
+    public function hasOptions() {
+      return isset($this->blueprint()['options']);
     }
 
     public function render($type = 'fields') {
@@ -64,7 +69,10 @@ class FormBuilder {
 
     public function options() {
         $blueprint = $this->blueprint();
-        return new FormFields($this->parent, $blueprint['options'], $this->values(), $this->prefix('options'));
+        $values = $this->values();
+        $values = isset($values['options']) ? $values['options'] : array();
+
+        return new FormFields($this->parent, $blueprint['options'], $values, $this->prefix('options'));
     }
 
     public function values($fields = array()) {

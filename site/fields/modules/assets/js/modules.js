@@ -45,6 +45,46 @@
 })(jQuery);
 
 (function($) {
+  var defaults = {
+    toggle: '.accordion-toggle',
+    content: '.accordion-content'
+  };
+
+  var Accordion = function(el, options){
+    this.$el = $(el);
+    this.options = options;
+
+    this.toggle = this.toggle.bind(this);
+
+    this.$el.on('click', options.toggle, function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      this.toggle($(e.target));
+    }.bind(this));
+  };
+
+  Accordion.prototype.toggle = function($target){
+    if($target.is('.accordion--closed')){
+      $target.removeClass('accordion--closed').addClass('accordion--open');
+      $target.next(this.options.content).show();
+    } else {
+      $target.removeClass('accordion--open').addClass('accordion--closed');
+      $target.next(this.options.content).hide();
+    }
+  };
+
+  $.fn.accordion = function(options){
+    options = options || {};
+    options = $.extend({}, defaults, options);
+
+    return this.each(function(){
+      new Accordion(this, options);
+    });
+  };
+})(jQuery);
+
+(function($) {
 
   var Modules = function(el) {
     var element  = $(el);
@@ -52,6 +92,9 @@
     var sortable = element.data('sortable');
 
     element.find('.tabs').tabs();
+    element.accordion({
+      toggle: '> .modules-entries > .modules-entry > .accordion-toggle'
+    });
 
     if(sortable === false) return false;
 
